@@ -1,26 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
+import HeroForm from "../components/forms/HeroForm";
 
 export default function Home() {
   return (
     <main>
-      <header className="bg-white">
-        <div className="">
-          <Link href="/">DevLinks</Link>
-          <nav>
-            <Link href="/about">About</Link>
-            <Link href="/pricing">Pricing</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
+      <section className="pt-32 ">
+        <div className="max-w-md mb-8">
+          <h1 className="text-6xl font-bold">
+            Your one <span className="bg-blue-500">link</span> <br />
+            for everything
+          </h1>
+          <h2 className="text-gray-500 text-xl mt-6">
+            Build Your Developer Portfolio in Minute. Share your links, social
+            profiles, contact info and more on one page
+          </h2>
         </div>
-
-        <div className="">
-          <Link href="/login">Sign In</Link>
-          <Link href="/register">Create Account</Link>
-        </div>
-      </header>
-
-      <section></section>
+        <HeroForm />
+      </section>
     </main>
   );
 }
