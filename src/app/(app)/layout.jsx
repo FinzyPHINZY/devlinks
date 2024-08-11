@@ -33,7 +33,6 @@ export default async function AppLayout({ children }) {
   return (
     <html lang="en">
       <body className={lato.className}>
-        <Toaster />
         <div className="flex min-h-screen ">
           <aside className="bg-white w-48 p-4 shadow-2xl">
             <div className="rounded-full overflow-hidden w-24 mx-auto">
@@ -52,6 +51,21 @@ export default async function AppLayout({ children }) {
             <div className="bg-white m-4 p-4 shadow">{children}</div>
           </main>
         </div>
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              background: "#363636",
+              color: "#fff",
+            },
+          }}
+        />
       </body>
     </html>
   );
