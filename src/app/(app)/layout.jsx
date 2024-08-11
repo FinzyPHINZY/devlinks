@@ -47,7 +47,7 @@ export default async function AppLayout({ children }) {
             </div>
           </aside>
           <main className="flex-1">
-            <div className="bg-white m-4 p-4 h-full shadow">{children}</div>
+            <div className="bg-white m-4 p-4 shadow">{children}</div>
           </main>
         </div>
       </body>
