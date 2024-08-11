@@ -23,7 +23,8 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/account/page.jsx"
+    "src/app/(app)/account/page.jsx",
+    "src/app/(app)/account/layout.jsx"
   ],
   "exclude": ["node_modules"]
 }
