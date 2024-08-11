@@ -14,6 +14,7 @@ export const saveFormSettings = async (formData) => {
   const displayName = formData.get("displayName");
   const location = formData.get("location");
   const bio = formData.get("bio");
+  const bgType = formData.get("bgType");
 
   await Page.updateOne(
     { owner: session.user?.email },
@@ -21,6 +22,7 @@ export const saveFormSettings = async (formData) => {
       displayName,
       location,
       bio,
+      bgType,
     }
   );
 

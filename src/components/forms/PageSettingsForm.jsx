@@ -19,6 +19,7 @@ const PageSettingsForm = ({ page, user }) => {
       <form action={saveBaseSettings}>
         <div className="bg-gray-300 py-16 h-32 flex justify-center items-center">
           <RadioToggler
+            defaultValue={page.bgType}
             options={[
               { value: "color", icon: Palette, label: "Color" },
               { value: "image", icon: ImageIcon, label: "Image" },
@@ -69,6 +70,7 @@ const PageSettingsForm = ({ page, user }) => {
             <span>Save</span>
           </SubmitButton>
         </div>
+        {/* <pre>{JSON.stringify(page, null, 2)}</pre> */}
       </form>
     </div>
   );

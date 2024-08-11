@@ -24,6 +24,10 @@ const PageSchema = new Schema(
       type: String,
       default: "",
     },
+    bgType: {
+      type: String,
+      default: "color",
+    },
   },
   { timestamps: true }
 );
