@@ -8,7 +8,7 @@ const SubmitButton = ({ children }) => {
       disabled={pending}
       className="bg-blue-500 disabled:bg-blue-300 text-white disabled:text-gray-200 py-2 px-4 mx-auto flex gap-2 justify-center items-center"
     >
-      {children}
+      {pending ? <span>Saving...</span> : children}
     </button>
   );
 };

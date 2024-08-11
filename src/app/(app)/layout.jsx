@@ -7,6 +7,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import AppSidebar from "../../components/layout/AppSidebar";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import { Toaster } from "react-hot-toast";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default async function AppLayout({ children }) {
   return (
     <html lang="en">
       <body className={lato.className}>
+        <Toaster />
         <div className="flex min-h-screen ">
           <aside className="bg-white w-48 p-4 shadow-2xl">
             <div className="rounded-full overflow-hidden w-24 mx-auto">
