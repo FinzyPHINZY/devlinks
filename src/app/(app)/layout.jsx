@@ -1,20 +1,17 @@
-import { Inter } from "next/font/google";
 import "../globals.css";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  ChartNetwork,
-  LogOut,
-  Settings,
-  SlidersHorizontal,
-  UserCog,
-} from "lucide-react";
-import LogoutButton from "../../components/Buttons/LogoutButton";
 
-const inter = Inter({ subsets: ["latin"] });
+import { getServerSession } from "next-auth";
+import { Inter, Lato } from "next/font/google";
+import { headers } from "next/headers";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import AppSidebar from "../../components/layout/AppSidebar";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+});
 
 export const metadata = {
   title: "DevLinks - Simplify Your Developer Portfolio",
@@ -23,6 +20,9 @@ export const metadata = {
 };
 
 export default async function AppLayout({ children }) {
+  const headersList = headers();
+  const url = headersList.get("next-url");
+  console.log("url: " + url);
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -31,7 +31,7 @@ export default async function AppLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={lato.className}>
         <div className="flex min-h-screen ">
           <aside className="bg-white w-48 p-4 shadow-2xl">
             <div className="rounded-full overflow-hidden w-24 mx-auto">
@@ -43,17 +43,7 @@ export default async function AppLayout({ children }) {
               />
             </div>
             <div className="text-center">
-              <nav className="inline-flex flex-col text-center mt-8 gap-6 text-gray-700 *:flex *:gap-2">
-                <Link href="/account" className="">
-                  <UserCog />
-                  <span>My Page</span>
-                </Link>
-                <Link href="/analytics">
-                  <ChartNetwork />
-                  <span>Analytics</span>
-                </Link>
-                <LogoutButton />
-              </nav>
+              <AppSidebar />
             </div>
           </aside>
           <main className="flex-1">

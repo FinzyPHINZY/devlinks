@@ -24,7 +24,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/app/(app)/account/page.jsx",
-    "src/app/(app)/account/layout.jsx"
+    "src/app/(app)/account/layout.jsx",
+    "src/app/api/auth/[...nextauth]/route.js"
   ],
   "exclude": ["node_modules"]
 }
