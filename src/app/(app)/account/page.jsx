@@ -6,6 +6,7 @@ import UsernameForm from "../../../components/forms/UsernameForm";
 import Page from "../../../models/page";
 import mongoose from "mongoose";
 import PageSettingsForm from "../../../components/forms/PageSettingsForm";
+import PageButtonsForm from "@/components/forms/PageButtonsForm";
 
 const AccountPage = async ({ searchParams }) => {
   const session = await getServerSession(authOptions);
@@ -17,7 +18,12 @@ const AccountPage = async ({ searchParams }) => {
   const page = await Page.findOne({ owner: session.user.email });
 
   if (page) {
-    return <PageSettingsForm page={page} user={session.user} />;
+    return (
+      <>
+        <PageSettingsForm page={page} user={session.user} />
+        <PageButtonsForm page={page} user={session.user} />
+      </>
+    );
   }
   return (
     <div>

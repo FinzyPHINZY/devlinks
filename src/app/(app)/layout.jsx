@@ -47,9 +47,7 @@ export default async function AppLayout({ children }) {
               <AppSidebar />
             </div>
           </aside>
-          <main className="flex-1">
-            <div className="bg-white m-4 p-4 shadow">{children}</div>
-          </main>
+          <main className="grow">{children}</main>
         </div>
         <Toaster
           position="bottom-right"
