@@ -1,4 +1,4 @@
-const RadioToggler = ({ options, defaultValue }) => {
+const RadioToggler = ({ options, defaultValue, onChange }) => {
   return (
     <div className="radio-togglers shadow">
       {options.map((item) => (
@@ -6,6 +6,7 @@ const RadioToggler = ({ options, defaultValue }) => {
           <input
             type="radio"
             name="bgType"
+            onClick={(ev) => onChange(ev.target.value)}
             value={item.value}
             defaultChecked={defaultValue === item.value}
           />

@@ -28,6 +28,14 @@ const PageSchema = new Schema(
       type: String,
       default: "color",
     },
+    bgColor: {
+      type: String,
+      default: "#000",
+    },
+    bgImage: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );

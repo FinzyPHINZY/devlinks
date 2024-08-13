@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import LogoutButton from "../Buttons/LogoutButton";
 import { usePathname } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 const AppSidebar = () => {
   const path = usePathname();
@@ -25,6 +26,10 @@ const AppSidebar = () => {
       >
         <ChartNetwork />
         <span>Analytics</span>
+      </Link>
+      <Link href="/" className="shadow p-2">
+        <ArrowLeft />
+        <span>Back to Website</span>
       </Link>
       <LogoutButton />
     </nav>

@@ -35,12 +35,12 @@ export default async function AppLayout({ children }) {
       <body className={lato.className}>
         <div className="flex min-h-screen ">
           <aside className="bg-white w-48 p-4 shadow-2xl">
-            <div className="rounded-full overflow-hidden w-24 mx-auto">
+            <div className="rounded-full overflow-hidden aspect-square w-24 mx-auto">
               <Image
                 src={session.user.image}
                 alt="user-image"
-                width={128}
-                height={128}
+                width={256}
+                height={256}
               />
             </div>
             <div className="text-center">
