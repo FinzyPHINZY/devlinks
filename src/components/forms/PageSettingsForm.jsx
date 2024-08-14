@@ -15,6 +15,35 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import SectionBox from "../layout/SectionBox";
 
+export const upload = async (event, callbackFn) => {
+  const file = event.target.files?.[0];
+  if (file) {
+    const uploadPromise = new Promise((resolve, reject) => {
+      const data = new FormData();
+      data.set("file", file);
+      fetch("/api/upload", {
+        method: "POST",
+        body: data,
+      }).then((response) => {
+        if (response.ok) {
+          response.json().then((link) => {
+            callbackFn(link);
+            resolve(link);
+          });
+        } else {
+          reject();
+        }
+      });
+    });
+
+    await toast.promise(uploadPromise, {
+      loading: "Uploading...",
+      success: "Uploaded!",
+      error: "Upload error!",
+    });
+  }
+};
+
 const PageSettingsForm = ({ page, user }) => {
   const [bgType, setBgType] = useState(page.bgType);
   const [bgColor, setBgColor] = useState(page.bgColor);
@@ -27,36 +56,6 @@ const PageSettingsForm = ({ page, user }) => {
       ? toast.success("Settings have been saved successfully.")
       : toast.error("Failed to save settings. Please try again.");
   }
-
-  const upload = async (event, callbackFn) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const uploadPromise = new Promise((resolve, reject) => {
-        const data = new FormData();
-        data.set("file", file);
-        console.log(data);
-        fetch("/api/upload", {
-          method: "POST",
-          body: data,
-        }).then((response) => {
-          if (response.ok) {
-            response.json().then((link) => {
-              callbackFn(link);
-              resolve(link);
-            });
-          } else {
-            reject();
-          }
-        });
-      });
-
-      await toast.promise(uploadPromise, {
-        loading: "Uploading...",
-        success: "Uploaded!",
-        error: "Upload error!",
-      });
-    }
-  };
 
   const handleCoverImageChange = async (event) => {
     await upload(event, (link) => setBgImage(link));

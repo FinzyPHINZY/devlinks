@@ -44,7 +44,6 @@ export const saveFormSettings = async (formData) => {
 };
 
 export const savePageButtons = async (formData) => {
-  console.log(formData);
   mongoose.connect(process.env.MONGODB_URI);
   const session = await getServerSession(authOptions);
 
@@ -58,6 +57,17 @@ export const savePageButtons = async (formData) => {
   const data = { buttons: buttonValues };
   console.log("Data to be saved:", data);
   await Page.updateOne({ owner: session.user?.email }, data);
+
+  return true;
+};
+
+export const savePageLinks = async (links) => {
+  mongoose.connect(process.env.MONGODB_URI);
+  const session = await getServerSession(authOptions);
+
+  if (!session) return false;
+
+  await Page.updateOne({ owner: session.user?.email }, { links: links });
 
   return true;
 };

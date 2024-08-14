@@ -23,7 +23,6 @@ export const metadata = {
 export default async function AppLayout({ children }) {
   const headersList = headers();
   const url = headersList.get("next-url");
-  console.log("url: " + url);
   const session = await getServerSession(authOptions);
 
   if (!session) {

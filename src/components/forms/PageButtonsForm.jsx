@@ -121,7 +121,11 @@ const PageButtonsForm = ({ page, user }) => {
     <SectionBox>
       <form action={saveButtons}>
         <h2 className="text-4xl font-bold mb-4">Buttons</h2>
-        <ReactSortable list={activeButtons} setList={setActiveButtons}>
+        <ReactSortable
+          handle=".handle"
+          list={activeButtons}
+          setList={setActiveButtons}
+        >
           {activeButtons.map((b) => (
             <div key={b} className="mb-4 flex items-center gap-2 ">
               <div className="w-36 flex gap-2 items-center text-gray-700">
@@ -142,7 +146,7 @@ const PageButtonsForm = ({ page, user }) => {
               >
                 <Trash size={18} />
               </button>
-              <GripHorizontal className="cursor-pointer text-gray-400" />
+              <GripHorizontal className="handle cursor-pointer text-gray-400" />
             </div>
           ))}
         </ReactSortable>
