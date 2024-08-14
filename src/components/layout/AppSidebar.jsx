@@ -10,7 +10,6 @@ import { ArrowLeft } from "lucide-react";
 
 const AppSidebar = () => {
   const path = usePathname();
-  console.log(path);
   return (
     <nav className="inline-flex flex-col text-center mt-8 gap-4 text-gray-500 *:flex *:gap-2 *:p-1">
       <Link
