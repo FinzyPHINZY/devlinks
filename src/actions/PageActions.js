@@ -1,13 +1,14 @@
 "use server";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import connnectDB from "@/lib/database";
 import Page from "@/models/page";
 import { User } from "@/models/User";
 import { mongoose } from "mongoose";
 import { getServerSession } from "next-auth";
 
 export const saveFormSettings = async (formData) => {
-  mongoose.connect(process.env.MONGODB_URI);
+  connnectDB();
   const session = await getServerSession(authOptions);
 
   if (!session) return false;
@@ -44,7 +45,7 @@ export const saveFormSettings = async (formData) => {
 };
 
 export const savePageButtons = async (formData) => {
-  mongoose.connect(process.env.MONGODB_URI);
+  connnectDB();
   const session = await getServerSession(authOptions);
 
   if (!session) return false;
@@ -62,7 +63,7 @@ export const savePageButtons = async (formData) => {
 };
 
 export const savePageLinks = async (links) => {
-  mongoose.connect(process.env.MONGODB_URI);
+  connnectDB();
   const session = await getServerSession(authOptions);
 
   if (!session) return false;

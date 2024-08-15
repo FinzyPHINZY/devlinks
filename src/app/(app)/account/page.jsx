@@ -4,10 +4,10 @@ import { redirect } from "next/navigation";
 
 import UsernameForm from "../../../components/forms/UsernameForm";
 import Page from "../../../models/page";
-import mongoose from "mongoose";
 import PageSettingsForm from "../../../components/forms/PageSettingsForm";
 import PageButtonsForm from "@/components/forms/PageButtonsForm";
 import PageLinksForm from "@/components/forms/PageLinksForm";
+import connnectDB from "@/lib/database";
 
 const AccountPage = async ({ searchParams }) => {
   const session = await getServerSession(authOptions);
@@ -15,7 +15,7 @@ const AccountPage = async ({ searchParams }) => {
   if (!session) {
     redirect("/");
   }
-  mongoose.connect(process.env.MONGODB_URI);
+  connnectDB();
   const page = await Page.findOne({ owner: session.user.email });
 
   if (page) {

@@ -1,7 +1,9 @@
 // "use client";
+import connnectDB from "@/lib/database";
 import "../../globals.css";
 
 import Page from "@/models/page";
+import { Stat } from "@/models/Stats";
 import { User } from "@/models/User";
 import { Link as Linkk } from "lucide-react";
 import {
@@ -19,7 +21,6 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
-import mongoose from "mongoose";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -49,11 +50,12 @@ const buttonLink = (key, value) => {
 };
 
 const UserPage = async ({ params }) => {
-  await mongoose.connect(process.env.MONGODB_URI);
-
+  connnectDB();
   const uri = params.uri;
   const page = await Page.findOne({ uri });
   const user = await User.findOne({ email: page.owner });
+
+  await Stat.create({ uri: uri, type: "view" });
 
   return (
     <div className="bg-blue-950 text-white min-h-screen">
@@ -105,7 +107,9 @@ const UserPage = async ({ params }) => {
       <div className="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 p-4 px-8">
         {page.links.map((link) => (
           <Link
+            ping={`${process.env.URL}api/click?url=${btoa(link.url)}`}
             href={link.url}
+            target="_blank"
             key={link.key}
             className="bg-indigo-900 p-2 flex items-center gap-2 rounded-lg"
           >

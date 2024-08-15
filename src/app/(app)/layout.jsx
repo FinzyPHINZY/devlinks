@@ -1,6 +1,5 @@
 import "../globals.css";
 import Page from "@/models/page";
-import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import { Lato } from "next/font/google";
 import Image from "next/image";
@@ -11,6 +10,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import connnectDB from "@/lib/database";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -30,7 +30,7 @@ export default async function AppLayout({ children }) {
     return redirect("/");
   }
 
-  mongoose.connect(process.env.MONGODB_URI);
+  connnectDB();
   const page = await Page.findOne({ owner: session.user.email });
 
   return (
