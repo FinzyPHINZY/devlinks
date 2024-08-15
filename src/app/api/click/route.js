@@ -1,9 +1,10 @@
 import connnectDB from "@/lib/database";
 import { Stat } from "@/models/Stats";
 
-export async function POST() {
+export async function POST(req) {
   connnectDB();
-  console.log("CLICK");
-  await Stat.create({ type: "click", uri: "" });
+  const url = new URL(req.url);
+  const clickedLink = atob(url.searchParams.get("url"));
+  await Stat.create({ type: "click", uri: clickedLink });
   return Response.json(true);
 }
