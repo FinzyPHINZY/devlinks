@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import connnectDB from "@/lib/database";
+import { TableOfContents } from "lucide-react";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -36,8 +37,23 @@ export default async function AppLayout({ children }) {
   return (
     <html lang="en">
       <body className={lato.className}>
-        <div className="flex min-h-screen ">
-          <aside className="bg-white w-48 p-4 shadow-2xl">
+        <div className="md:flex min-h-screen ">
+          <div className="">
+            <label
+              htmlFor="navCheckbox"
+              className="shadow-lg p-4 rounded-md bg-white items-center cursor-pointer gap-2 inline-flex md:hidden ml-4 mt-4 mb-2"
+            >
+              <TableOfContents />
+              <span>Open Navigation</span>
+            </label>
+            <input type="checkbox" id="navCheckbox" className="hidden" />
+            <label
+              htmlFor="navCheckbox"
+              className="backdrop fixed inset-0 bg-black/80 z-10 hidden"
+            ></label>
+          </div>
+
+          <aside className="hidden bg-white w-48 p-4 shadow-2xl fixed md:static left-0 top-0 bottom-0 z-20 transition-all">
             <div className="sticky top-0 pt-4">
               <div className="rounded-full overflow-hidden aspect-square w-24 mx-auto">
                 <Image

@@ -30,3 +30,15 @@ textarea {
 label.input-label {
   @apply text-gray-500 uppercase font-semibold text-sm;
 }
+
+.hidden {
+  display: none;
+}
+
+#navCheckbox:checked ~ aside {
+  display: block;
+}
+
+#navCheckbox:checked ~ .backdrop {
+  display: block;
+}

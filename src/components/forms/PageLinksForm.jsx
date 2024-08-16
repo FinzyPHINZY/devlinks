@@ -118,7 +118,7 @@ const PageLinksForm = ({ page, user }) => {
                     className="border text-gray-600 my-2 p-2 flex item-center justify-center gap-1 rounded-md cursor-pointer"
                   >
                     <CloudUpload />
-                    <span>Change Icon</span>
+                    <span className="hidden md:block">Change Icon</span>
                   </label>
                 </div>
               </div>
@@ -147,7 +147,7 @@ const PageLinksForm = ({ page, user }) => {
                 />
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col md:flex-row items-center gap-2">
                 <button
                   onClick={() => removeLink(link)}
                   type="button"

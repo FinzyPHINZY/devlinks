@@ -10,7 +10,8 @@ export default async function Home() {
       <section className="pt-32 ">
         <div className="max-w-md mb-8">
           <h1 className="text-6xl font-bold">
-            Your one <span className="bg-blue-500">link</span> <br />
+            Your one <span className="bg-blue-500 px-2">link</span>{" "}
+            <br className="hidden md:block" />
             for everything
           </h1>
           <h2 className="text-gray-500 text-xl mt-6">

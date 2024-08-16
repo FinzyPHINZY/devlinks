@@ -73,10 +73,10 @@ const AnalyticsPage = async () => {
         <h2 className="text-xl mb-6 text-center">Clicks</h2>
         {page.links.map((link) => (
           <div
-            className=" flex gap-6 items-center border-t border-gray-200 py-4"
+            className="flex flex-col items-center text-center md:text-left md:flex-row gap-4 md:gap-6 md:items-center border-t border-gray-200 py-4"
             key={link.key}
           >
-            <div className="text-blue-500 pl-4">
+            <div className="text-blue-500 pl-4 hidden md:block ">
               <Link />
             </div>
             <div className="grow">

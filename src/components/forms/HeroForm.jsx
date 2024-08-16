@@ -1,5 +1,6 @@
 "use client";
 
+import { CircleArrowRight } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -38,8 +39,11 @@ const HeroForm = ({ user }) => {
     >
       <span className="bg-white py-4 pl-4">devlink.to/</span>
       <input type="text" placeholder="username" className="py-4 outline-none" />
-      <button type="submit" className="bg-blue-500 text-white py-4 px-6">
-        Join for Free
+      <button
+        type="submit"
+        className=" md:block bg-blue-500 text-white py-4 px-2 md:px-6 whitespace-nowrap"
+      >
+        <CircleArrowRight />
       </button>
     </form>
   );

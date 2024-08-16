@@ -127,8 +127,8 @@ const PageButtonsForm = ({ page, user }) => {
           setList={setActiveButtons}
         >
           {activeButtons.map((b) => (
-            <div key={b} className="mb-4 flex items-center gap-2 ">
-              <div className="w-36 flex gap-2 items-center text-gray-700">
+            <div key={b.key} className="mb-4 flex items-center gap-2 ">
+              <div className="w-36 flex flex-col md:flex-row gap-2 items-center text-gray-700">
                 <b.icon />
                 <span>{b.label}</span>
               </div>

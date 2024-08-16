@@ -16,7 +16,7 @@ const Header = async () => {
             <FontAwesomeIcon icon={faLink} />
             <span className="font-bold">Devlinks</span>
           </Link>
-          <nav className="flex items-center gap-4 text-slate-500 text-sm">
+          <nav className="hidden md:flex items-center gap-4 text-slate-500 text-sm">
             <Link href="/about">About</Link>
             <Link href="/pricing">Pricing</Link>
             <Link href="/contact">Contact</Link>
@@ -31,7 +31,9 @@ const Header = async () => {
             </>
           ) : (
             <>
-              <Link href="/account">Hello, {session.user.name}</Link>
+              <Link href="/account" className="hidden md:block">
+                Hello, {session.user.name}
+              </Link>
               <LogoutButton />
             </>
           )}

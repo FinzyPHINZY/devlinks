@@ -56,7 +56,6 @@ export const savePageButtons = async (formData) => {
   });
 
   const data = { buttons: buttonValues };
-  console.log("Data to be saved:", data);
   await Page.updateOne({ owner: session.user?.email }, data);
 
   return true;
