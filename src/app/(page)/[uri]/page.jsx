@@ -55,7 +55,7 @@ const UserPage = async ({ params }) => {
   const page = await Page.findOne({ uri });
   const user = await User.findOne({ email: page.owner });
 
-  await Stat.create({ uri: uri, type: "view" });
+  await Stat.create({ uri: uri, page: uri, type: "view" });
 
   return (
     <div className="bg-blue-950 text-white min-h-screen">
@@ -107,7 +107,9 @@ const UserPage = async ({ params }) => {
       <div className="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 p-4 px-8">
         {page.links.map((link) => (
           <Link
-            ping={`${process.env.URL}api/click?url=${btoa(link.url)}`}
+            ping={`${process.env.URL}api/click?url=${btoa(link.url)}&page=${
+              page.uri
+            }`}
             href={link.url}
             target="_blank"
             key={link.key}
