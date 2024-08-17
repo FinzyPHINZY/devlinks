@@ -53,7 +53,7 @@ export default async function AppLayout({ children }) {
             ></label>
           </div>
 
-          <aside className="hidden bg-white w-48 p-4 shadow-2xl fixed md:static left-0 top-0 bottom-0 z-20 transition-all">
+          <aside className="hidden md:block bg-white w-48 p-4 shadow-2xl fixed md:static left-0 top-0 bottom-0 z-20 transition-all">
             <div className="sticky top-0 pt-4">
               <div className="rounded-full overflow-hidden aspect-square w-24 mx-auto">
                 <Image
