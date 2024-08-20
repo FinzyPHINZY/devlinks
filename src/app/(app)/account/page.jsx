@@ -19,15 +19,15 @@ const AccountPage = async ({ searchParams }) => {
   connnectDB();
   const page = await Page.findOne({ owner: session.user.email });
 
-  const leanPage = cloneDeep(page.toJSON());
-  leanPage._id = leanPage._id.toString();
+  // const leanPage = cloneDeep(page.toJSON());
+  // leanPage._id = leanPage._id.toString();
 
   if (page) {
     return (
       <>
-        <PageSettingsForm page={leanPage} user={session.user} />
-        <PageButtonsForm page={leanPage} user={session.user} />
-        <PageLinksForm page={leanPage} user={session.user} />
+        <PageSettingsForm page={page} user={session.user} />
+        <PageButtonsForm page={page} user={session.user} />
+        <PageLinksForm page={page} user={session.user} />
       </>
     );
   }
