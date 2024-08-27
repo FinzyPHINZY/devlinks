@@ -21,7 +21,6 @@ const AccountPage = async ({ searchParams }) => {
   if (!page) {
     return (
       <div>
-        {JSON.stringify(page)}
         <UsernameForm usernameInput={usernameInput} />
       </div>
     );
