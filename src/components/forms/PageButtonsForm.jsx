@@ -87,11 +87,18 @@ const allButtons = [
 ];
 
 const PageButtonsForm = ({ page, user }) => {
-  const savedButtonsKeys = Object.keys(page.buttons);
-  const savedButtonsInfo = savedButtonsKeys.map((key) =>
-    allButtons.find((button) => button.key === key)
-  );
+  let savedButtonsInfo = [];
+
+  if (page.buttons) {
+    const savedButtonsKeys = Object.keys(page.buttons);
+    savedButtonsInfo = savedButtonsKeys.map((key) =>
+      allButtons.find((button) => button.key === key)
+    );
+  }
+
   const [activeButtons, setActiveButtons] = useState(savedButtonsInfo);
+
+  console.log(activeButtons);
 
   const addButtonToProfile = (button) => {
     setActiveButtons((prev) => {
@@ -108,10 +115,8 @@ const PageButtonsForm = ({ page, user }) => {
     }
   };
 
-  const removeButton = ({ key }) => {
-    setActiveButtons((prev) => {
-      return prev.filter((button) => button.key !== key);
-    });
+  const removeButton = (key) => {
+    setActiveButtons((prev) => prev.filter((button) => button.key !== key));
   };
 
   const availableButtons = allButtons
@@ -134,19 +139,24 @@ const PageButtonsForm = ({ page, user }) => {
               </div>
               <input
                 type="text"
-                defaultValue={page.buttons[b.key]}
+                defaultValue={page.buttons ? page.buttons[b.key] : ""}
                 style={{ marginBottom: "0" }}
                 placeholder={b.placeholder}
                 name={b.key}
+                aria-label={`Input for ${b.label}`}
               />
               <button
-                onClick={() => removeButton(b)}
+                onClick={() => removeButton(b.key)}
                 type="button"
                 className="p-2 bg-gray-300 text-red-500"
+                aria-label={`Remove ${b.label} button`}
               >
                 <Trash size={18} />
               </button>
-              <GripHorizontal className="handle cursor-pointer text-gray-400" />
+              <GripHorizontal
+                className="handle cursor-pointer text-gray-400"
+                aria-label="Drag to reorder button"
+              />
             </div>
           ))}
         </ReactSortable>
@@ -158,16 +168,17 @@ const PageButtonsForm = ({ page, user }) => {
               type="button"
               className="flex gap-1 p-2 items-center bg-gray-200"
               onClick={() => addButtonToProfile(button)}
+              aria-label={`Add ${button.label} button`}
             >
-              <button.icon color="blue" />
+              <button.icon color="blue" aria-hidden="true" />
               <span>{button.label}</span>
-              <Plus size={12} color="green" />
+              <Plus size={12} color="green" aria-hidden="true" />
             </button>
           ))}
         </div>
         <div className="mt-8">
-          <SubmitButton>
-            <Save />
+          <SubmitButton aria-label="Save button links">
+            <Save aria-hidden="true" />
             <span>Save</span>
           </SubmitButton>
         </div>
